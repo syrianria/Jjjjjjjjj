@@ -1,34 +1,28 @@
 body {
   font-family: 'Arial', sans-serif;
-  background: linear-gradient(45deg, #4CAF50, #8BC34A); /* تدرج لوني أخضر */
-  color: #fff; /* النصوص بيضاء عشان تكون واضحة */
+  background-color: #ffffff; /* خلفية بيضاء */
   direction: rtl;
   text-align: right;
   padding: 20px;
-  margin: 0;
-  height: 100vh;
 }
 
 .container {
   max-width: 500px;
   margin: auto;
-  background-color: rgba(255, 255, 255, 0.8); /* خلفية شفافة عشان تبين الخلفية الجميلة */
+  background-color: rgba(255, 255, 255, 0.8); /* خلفية بيضاء شبه شفافة */
   padding: 30px;
   border-radius: 10px;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-  animation: fadeIn 2s ease-in-out; /* تأثير ظهور */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 h1 {
-  font-size: 24px;
-  font-weight: bold;
-  text-align: center;
-  color: #333;
+  color: #000000; /* لون العنوان أسود قاتم */
 }
 
 label {
   display: block;
   margin-top: 15px;
+  color: #000000; /* نص اللون أسود قاتم */
 }
 
 input, select, button {
@@ -37,11 +31,6 @@ input, select, button {
   margin-top: 5px;
   border-radius: 5px;
   border: 1px solid #ccc;
-  transition: all 0.3s ease; /* تأثير عند التفاعل مع الحقول */
-}
-
-input:focus, select:focus {
-  border-color: #4CAF50; /* تغيير اللون عند التركيز */
 }
 
 button {
@@ -50,12 +39,6 @@ button {
   font-weight: bold;
   cursor: pointer;
   margin-top: 20px;
-  transition: background-color 0.3s, transform 0.3s;
-}
-
-button:hover {
-  background-color: #45a049;
-  transform: scale(1.05); /* تكبير الزر عند المرور عليه */
 }
 
 #result {
@@ -64,10 +47,10 @@ button:hover {
   background-color: #e0ffe0;
   border: 1px solid #4CAF50;
   border-radius: 5px;
-  text-align: center;
 }
 
-@keyframes fadeIn {
-  0% { opacity: 0; }
-  100% { opacity: 1; }
+#school-logo {
+  display: block;
+  margin: 20px auto;
+  max-width: 150px; /* التحكم في حجم الشعار */
 }
