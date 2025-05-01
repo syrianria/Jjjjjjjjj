@@ -1,56 +1,32 @@
-document.getElementById('absence-form').addEventListener('submit', function(event) {
-  event.preventDefault();
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <title>تصريح خروج طالبة</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>نموذج تصريح الخروج</h1>
+    <form id="absence-form">
+      <label for="student-name">اسم الطالبة:</label>
+      <input type="text" id="student-name" required>
 
-  const studentName = document.getElementById('student-name').value;
-  const teacherName = "جملاء";
-  const subject = "تقنيه";
-  const reason = "الخروج المؤقت";
-  const movementType = document.getElementById('movement-type').value;
-  const timestampInput = document.getElementById('timestamp').value;
+      <label for="movement-type">نوع الحركة:</label>
+      <select id="movement-type" required>
+        <option value="خروج">خروج</option>
+        <option value="رجوع">رجوع</option>
+      </select>
 
-  if (!timestampInput) {
-    alert("الرجاء إدخال الوقت");
-    return;
-  }
+      <label for="timestamp">الوقت:</label>
+      <input type="datetime-local" id="timestamp" required>
 
-  const timestamp = new Date(timestampInput);
-  let resultMessage = '';
+      <button type="submit">إرسال</button>
+    </form>
 
-  if (movementType === 'رجوع') {
-    const exitTimeStr = localStorage.getItem('exitTime');
-    const exitTime = exitTimeStr ? new Date(exitTimeStr) : null;
+    <div id="result"></div>
+  </div>
 
-    if (exitTime) {
-      const durationMinutes = Math.ceil((timestamp - exitTime) / 60000);
-      if (durationMinutes < 0) {
-        resultMessage = "<p>خطأ: وقت الرجوع قبل وقت الخروج.</p>";
-      } else {
-        resultMessage = `
-          <h2>تصريح الرجوع</h2>
-          <p><strong>اسم الطالبة:</strong> ${studentName}</p>
-          <p><strong>اسم المعلمة:</strong> ${teacherName}</p>
-          <p><strong>المادة:</strong> ${subject}</p>
-          <p><strong>الغرض:</strong> ${reason}</p>
-          <p><strong>الوقت:</strong> ${timestamp.toLocaleString()}</p>
-          <p><strong>مدة الغياب:</strong> ${durationMinutes} دقيقة</p>
-          <p><strong>تصريح الرجوع: تم بنجاح!</strong></p>
-        `;
-      }
-    } else {
-      resultMessage = "<p>لا يوجد وقت خروج مسجل، تأكدي من تسجيل الخروج أولًا.</p>";
-    }
-  } else {
-    localStorage.setItem('exitTime', timestampInput);
-    resultMessage = `
-      <h2>تصريح الخروج</h2>
-      <p><strong>اسم الطالبة:</strong> ${studentName}</p>
-      <p><strong>اسم المعلمة:</strong> ${teacherName}</p>
-      <p><strong>المادة:</strong> ${subject}</p>
-      <p><strong>الغرض:</strong> ${reason}</p>
-      <p><strong>الوقت:</strong> ${timestamp.toLocaleString()}</p>
-      <p><strong>تصريح الخروج: تم بنجاح!</strong></p>
-    `;
-  }
-
-  document.getElementById('result').innerHTML = resultMessage;
-});
+  <script src="script.js"></script>
+</body>
+</html>
